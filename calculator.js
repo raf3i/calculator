@@ -3,7 +3,7 @@ const numbers = document.querySelectorAll(".number");
 let display = "";
 numbers.forEach(number => number.addEventListener("click", e => {
   if (display.length >= 11) return;
-  let value =e.target.dataset.value
+  let value = e.target.dataset.value
   console.log(value);
   display += value;
   answer.innerHTML = display;
