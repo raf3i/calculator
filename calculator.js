@@ -20,9 +20,10 @@ numbers.forEach(number => number.addEventListener("click", e => {
 
 // Clear button
 const clear = document.querySelector(".clear");
-clear.addEventListener("click", e => {
+clear.addEventListener("click", () => {
   display = "";
   answer.innerHTML = 0;
+  decimal = false;
 });
 
 operate(subtract);
