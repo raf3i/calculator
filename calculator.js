@@ -1,13 +1,29 @@
 const answer = document.querySelector(".answer");
 const numbers = document.querySelectorAll(".number");
+
 let display = "";
+let decimal = false;
 numbers.forEach(number => number.addEventListener("click", e => {
+  // Limit number length to 11
   if (display.length >= 11) return;
+
   let value = e.target.dataset.value
+
+  // Make sure not to repeat decimal
+  if (value == "." && decimal === true) return;
+  else if (value == ".") decimal = true;
+
   console.log(value);
   display += value;
   answer.innerHTML = display;
 }));
+
+// Clear button
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", e => {
+  display = "";
+  answer.innerHTML = 0;
+});
 
 operate(subtract);
 
