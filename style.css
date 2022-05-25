@@ -3,6 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(0, 4, 44);
 }
 
 @font-face {
@@ -10,10 +11,40 @@ body {
   src: url('./digital-7\ \(mono\).ttf');
 }
 
+.calculator {
+  padding: 30px;
+  background-color: rgb(0, 8, 78);
+  border: 1px solid white;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.screen,
+.buttons {
+  border: 1px solid white;
+}
+
+.screen {
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.equation,
+.answer {
+  font-family: digital-clock-font;
+}
+
+.equation {
+  font-size: 35px;
+}
+
 .answer {
   height: 70px;
   font-size: 80px;
-  font-family: digital-clock-font;
+  margin: 20px 0 0 0;
   display: flex;
   justify-content: flex-end;
 }
@@ -29,18 +60,23 @@ body {
   padding: 0;
 }
 
-.clear {
+.clear,
+.backspace {
   flex-grow: 1;
   height: 50px;
 }
 
 .number-button,
-.clear {
-  border: 1px solid black;
+.clear,
+.backspace {
+  border: 0px solid black;
+  background-color: cyan;
   /* border-radius: 0; */
 }
 
 .number-button:hover,
-.clear:hover {
-  background-color: lightgrey;
+.clear:hover,
+.backspace:hover {
+  background-color: rgb(0, 224, 224);
+  border: 1px solid black;
 }
