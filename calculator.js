@@ -3,6 +3,7 @@ const numbers = document.querySelectorAll(".number");
 
 let display = "";
 let decimal = false;
+let begin = true;
 numbers.forEach(number => number.addEventListener("click", e => {
   // Limit number length to 11
   if (display.length >= 11) return;
@@ -11,7 +12,12 @@ numbers.forEach(number => number.addEventListener("click", e => {
 
   // Make sure not to repeat decimal
   if (value == "." && decimal === true) return;
-  else if (value == ".") decimal = true;
+  if (value == "." && begin === true) {
+    value = "0.";
+    begin = false;
+    decimal = true;
+  }
+  if (value == ".") decimal = true;
 
   console.log(value);
   display += value;
