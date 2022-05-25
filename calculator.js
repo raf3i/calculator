@@ -10,11 +10,12 @@ numbers.forEach(number => number.addEventListener("click", e => {
 
   let value = e.target.dataset.value
 
+  if (begin === true && value == 0) return;
+
   // Make sure not to repeat decimal
   if (value == "." && decimal === true) return;
   if (value == "." && begin === true) {
     value = "0.";
-    begin = false;
     decimal = true;
   }
   if (value == ".") decimal = true;
@@ -22,6 +23,7 @@ numbers.forEach(number => number.addEventListener("click", e => {
   console.log(value);
   display += value;
   answer.innerHTML = display;
+  begin = false;
 }));
 
 // Clear button
@@ -30,6 +32,7 @@ clear.addEventListener("click", () => {
   display = "";
   answer.innerHTML = 0;
   decimal = false;
+  begin = true;
 });
 
 operate(subtract);
