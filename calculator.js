@@ -13,21 +13,29 @@ let display = "";
 let decimal = false;
 let begin = true;
 numbers.forEach(number => number.addEventListener("click", e => {
-  // Limit number length to 11
+  // Limit number length to 11 digits
   if (display.length >= 11) return;
 
   let value = e.target.dataset.value
 
-  // Prevent first number to be 0
-  if (begin === true && value == 0) return;
+  // Prevent additional 0 inputs
+  if (display == "0" && value == "0") return;
+  else if (display == "0") {
+    display = "";
+    begin = true;
+  }
 
-  // Make sure not to repeat decimal
+  // Display number without 0 if 0 was pressed first
+  // if (display == "0" && value != "0") display = "";
+
+  // Prevent repeating decimal inputs
   if (value == "." && decimal === true) return;
+  if (value == ".") decimal = true;
+
+  // Display 0 before the decimal if decimal button is pressed first
   if (value == "." && begin === true) {
     value = "0.";
-    decimal = true;
   }
-  if (value == ".") decimal = true;
 
   console.log(value);
   display += value;
@@ -123,7 +131,7 @@ function divide(a, b) {
 // Other functions
 function clearDisplay() {
   display = "";
-  answer.innerHTML = 0;
+  answer.innerHTML = display;
   decimal = false;
   begin = true;
 }
