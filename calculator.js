@@ -52,14 +52,21 @@ let firstValue;
 let secondValue;
 let operator;
 let equationDisplay;
+let equalPressed = false;
 addition.addEventListener("click", e => {
   // Prevent empty input before click
   if (display === "") return;
 
+  // Allow clicking equal button
+  equalPressed = false;
+
   operator = add;
   firstValue = display;
+
+  // Update equation display
   equationDisplay = firstValue + " " + e.target.innerHTML + " ";
   equation.innerHTML = equationDisplay;
+  
   firstValue = parseInt(firstValue);
   clearDisplay();
 });
@@ -77,7 +84,6 @@ division.addEventListener("click", e => {
 });
 
 let result;
-let equalPressed = false;
 equalButton.addEventListener("click", () => {
   // Prevent empty input before click
   if (display === "") return;
