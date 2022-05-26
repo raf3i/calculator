@@ -10,11 +10,15 @@ const division = document.querySelector("button[data-value=division]");
 const equalButton = document.querySelector("button[data-value=equal]");
 
 let display = "";
+let result = null;
 let decimal = false;
 let begin = true;
 numbers.forEach(number => number.addEventListener("click", e => {
   // Limit number length to 11 digits
   if (display.length >= 11) return;
+
+  // Let the operator take display's value
+  result = null;
 
   let value = e.target.dataset.value
 
@@ -45,7 +49,10 @@ numbers.forEach(number => number.addEventListener("click", e => {
 
 // Clear button
 const clear = document.querySelector(".clear");
-clear.addEventListener("click", clearDisplay);
+clear.addEventListener("click", () => {
+  clearDisplay();
+  clearEquation();
+});
 
 // Operator buttons' functionality
 let firstValue;
@@ -55,13 +62,14 @@ let equationDisplay;
 let equalPressed = false;
 addition.addEventListener("click", e => {
   // Prevent empty input before click
-  if (display === "") return;
+  if (display === "" && result === null) return;
 
   // Allow clicking equal button
   equalPressed = false;
 
   operator = add;
-  firstValue = display;
+  if (result === null) firstValue = display;
+  else firstValue = result;
 
   // Update equation display
   equationDisplay = firstValue + " " + e.target.innerHTML + " ";
@@ -83,7 +91,6 @@ division.addEventListener("click", e => {
   console.log(e.target);
 });
 
-let result;
 equalButton.addEventListener("click", () => {
   // Prevent empty input before click
   if (display === "") return;
@@ -109,8 +116,6 @@ equalButton.addEventListener("click", () => {
   console.log(result);
 
   clearDisplay();
-
-  display = result;
 });
 
 // Operator functions
@@ -135,9 +140,19 @@ function divide(a, b) {
 }
 
 // Other functions
+//
 function clearDisplay() {
   display = "";
   answer.innerHTML = display;
   decimal = false;
   begin = true;
+}
+
+function clearEquation() {
+  equation.innerHTML = "88888888888888";
+  firstValue = null;
+  operator = null;
+  secondValue = null;
+  result = null;
+  equalPressed = true;
 }
