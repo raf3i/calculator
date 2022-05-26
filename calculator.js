@@ -18,6 +18,7 @@ numbers.forEach(number => number.addEventListener("click", e => {
 
   let value = e.target.dataset.value
 
+  // Prevent first number to be 0
   if (begin === true && value == 0) return;
 
   // Make sure not to repeat decimal
@@ -38,8 +39,18 @@ numbers.forEach(number => number.addEventListener("click", e => {
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", clearDisplay);
 
+// Operator buttons' functionality
+let firstValue;
+let secondValue;
+let operator;
+let equationDisplay;
 addition.addEventListener("click", e => {
-  console.log(e.target);
+  operator = add;
+  firstValue = display;
+  equationDisplay = firstValue + " " + e.target.innerHTML + " ";
+  equation.innerHTML = equationDisplay;
+  firstValue = parseInt(firstValue);
+  clearDisplay();
 });
 
 subtraction.addEventListener("click", e => {
@@ -54,15 +65,38 @@ division.addEventListener("click", e => {
   console.log(e.target);
 });
 
-equalButton.addEventListener("click", e => {
-  console.log(e.target);
+let result;
+let equalPressed = false;
+equalButton.addEventListener("click", () => {
+  // Prevent multiple equal clicks
+  if (equalPressed) return;
+  equalPressed = true;
+
+  // Get second value
+  secondValue = parseInt(display);
+
+  // Update display with second value
+  equationDisplay += secondValue.toString() + " ";
+  equation.innerHTML = equationDisplay;
+
+  // Perform operation
+  result = operate(operator, firstValue, secondValue);
+  
+  // Update display with equation result
+  equationDisplay += "= " + result.toString();
+  equation.innerHTML = equationDisplay;
+
+  console.log(result);
+
+  clearDisplay();
+
+  display = result;
 });
 
-// operate(subtract);
-
-// function operate(func) {
-//   console.log(func(a, b));
-// }
+// Operator functions
+function operate(func, a, b) {
+  return func(a, b);
+}
 
 function add(a, b) {
   return a + b;
@@ -80,6 +114,7 @@ function divide(a, b) {
   return a / b;
 }
 
+// Other functions
 function clearDisplay() {
   display = "";
   answer.innerHTML = 0;
