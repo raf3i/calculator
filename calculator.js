@@ -45,6 +45,9 @@ let secondValue;
 let operator;
 let equationDisplay;
 addition.addEventListener("click", e => {
+  // Prevent empty input before click
+  if (display === "") return;
+
   operator = add;
   firstValue = display;
   equationDisplay = firstValue + " " + e.target.innerHTML + " ";
@@ -68,6 +71,9 @@ division.addEventListener("click", e => {
 let result;
 let equalPressed = false;
 equalButton.addEventListener("click", () => {
+  // Prevent empty input before click
+  if (display === "") return;
+
   // Prevent multiple equal clicks
   if (equalPressed) return;
   equalPressed = true;
