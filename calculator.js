@@ -36,12 +36,7 @@ numbers.forEach(number => number.addEventListener("click", e => {
 
 // Clear button
 const clear = document.querySelector(".clear");
-clear.addEventListener("click", () => {
-  display = "";
-  answer.innerHTML = 0;
-  decimal = false;
-  begin = true;
-});
+clear.addEventListener("click", clearDisplay);
 
 addition.addEventListener("click", e => {
   console.log(e.target);
@@ -63,11 +58,11 @@ equalButton.addEventListener("click", e => {
   console.log(e.target);
 });
 
-operate(subtract);
+// operate(subtract);
 
-function operate(func) {
-  console.log(func(a, b));
-}
+// function operate(func) {
+//   console.log(func(a, b));
+// }
 
 function add(a, b) {
   return a + b;
@@ -83,4 +78,11 @@ function multiply(a, b) {
 
 function divide(a, b) {
   return a / b;
+}
+
+function clearDisplay() {
+  display = "";
+  answer.innerHTML = 0;
+  decimal = false;
+  begin = true;
 }
