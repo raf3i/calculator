@@ -1,5 +1,13 @@
+const equation = document.querySelector(".equation");
 const answer = document.querySelector(".answer");
 const numbers = document.querySelectorAll(".number");
+
+const addition = document.querySelector("button[data-value=addition]");
+const subtraction = document.querySelector("button[data-value=subtraction]");
+const multiplication = document.querySelector("button[data-value=multiplication]");
+const division = document.querySelector("button[data-value=division]");
+
+const equalButton = document.querySelector("button[data-value=equal]");
 
 let display = "";
 let decimal = false;
@@ -33,6 +41,26 @@ clear.addEventListener("click", () => {
   answer.innerHTML = 0;
   decimal = false;
   begin = true;
+});
+
+addition.addEventListener("click", e => {
+  console.log(e.target);
+});
+
+subtraction.addEventListener("click", e => {
+  console.log(e.target);
+});
+
+multiplication.addEventListener("click", e => {
+  console.log(e.target);
+});
+
+division.addEventListener("click", e => {
+  console.log(e.target);
+});
+
+equalButton.addEventListener("click", e => {
+  console.log(e.target);
 });
 
 operate(subtract);
