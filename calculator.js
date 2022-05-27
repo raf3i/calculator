@@ -59,7 +59,7 @@ addition.addEventListener("click", e => {
 });
 
 subtraction.addEventListener("click", e => {
-  console.log(e.target);
+  calculate(subtract, e);
 });
 
 multiplication.addEventListener("click", e => {
@@ -67,7 +67,7 @@ multiplication.addEventListener("click", e => {
 });
 
 division.addEventListener("click", e => {
-  console.log(e.target);
+  calculate(divide, e);
 });
 
 equalButton.addEventListener("click", () => {
