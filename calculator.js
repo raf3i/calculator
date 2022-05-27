@@ -48,6 +48,10 @@ clear.addEventListener("click", () => {
   clearEquation();
 });
 
+// Back button
+const back = document.querySelector(".backspace");
+back.addEventListener("click", backspace);
+
 // Operator buttons' functionality
 let firstValue;
 let secondValue;
@@ -166,4 +170,11 @@ function clearEquation() {
   secondValue = null;
   result = null;
   equalPressed = true;
+}
+
+function backspace() {
+  if (display !== "") {
+    display = display.slice(0, -1);
+    answer.innerHTML = display;
+  }
 }
