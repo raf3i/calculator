@@ -66,7 +66,6 @@ addition.addEventListener("click", e => {
   // Allow clicking equal button
   equalPressed = false;
 
-  operator = add;
   if (display !== "" && result !== null) {
     firstValue = operate(operator, parseFloat(result), parseFloat(display));
     result = parseFloat(firstValue);
@@ -76,6 +75,7 @@ addition.addEventListener("click", e => {
   } else {
     firstValue = result;
   }
+  operator = add;
 
   // Update equation display
   equationDisplay = firstValue + " " + e.target.innerHTML + " ";
@@ -90,7 +90,34 @@ subtraction.addEventListener("click", e => {
 });
 
 multiplication.addEventListener("click", e => {
-  
+  // Prevent empty input before click
+  if (display === "" && result === null) return;
+
+  // Check if user is starting new operation without clicking clear before hand (while answer still on screen)
+  if (display !== "" && equalPressed) {
+    result = null;
+  }
+
+  // Allow clicking equal button
+  equalPressed = false;
+
+  if (display !== "" && result !== null) {
+    firstValue = operate(operator, parseFloat(result), parseFloat(display));
+    result = parseFloat(firstValue);
+  } else if (display !== "" && result === null) {
+    firstValue = parseFloat(display);
+    result = firstValue;
+  } else {
+    firstValue = result;
+  }
+  operator = multiply;
+
+  // Update equation display
+  equationDisplay = firstValue + " " + e.target.innerHTML + " ";
+  equation.innerHTML = equationDisplay;
+
+  firstValue = parseFloat(firstValue);
+  clearDisplay();
   console.log(e.target);
 });
 
