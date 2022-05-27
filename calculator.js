@@ -26,9 +26,6 @@ numbers.forEach(number => number.addEventListener("click", e => {
     begin = true;
   }
 
-  // Display number without 0 if 0 was pressed first
-  // if (display == "0" && value != "0") display = "";
-
   // Prevent repeating decimal inputs
   if (value == "." && decimal === true) return;
   if (value == ".") decimal = true;
@@ -71,26 +68,20 @@ addition.addEventListener("click", e => {
 
   operator = add;
   if (display !== "" && result !== null) {
-    firstValue = operate(operator, parseInt(result), parseInt(display));
-    result = parseInt(firstValue);
-  }
-  else if (display !== "" && result === null) {
-    firstValue = parseInt(display);
+    firstValue = operate(operator, parseFloat(result), parseFloat(display));
+    result = parseFloat(firstValue);
+  } else if (display !== "" && result === null) {
+    firstValue = parseFloat(display);
     result = firstValue;
-  }
-  else {
+  } else {
     firstValue = result;
   }
-  // if (result === null) {
-  //   firstValue = display
-  // }
-  // else firstValue = result;
 
   // Update equation display
   equationDisplay = firstValue + " " + e.target.innerHTML + " ";
   equation.innerHTML = equationDisplay;
-  
-  firstValue = parseInt(firstValue);
+
+  firstValue = parseFloat(firstValue);
   clearDisplay();
 });
 
@@ -99,6 +90,7 @@ subtraction.addEventListener("click", e => {
 });
 
 multiplication.addEventListener("click", e => {
+  
   console.log(e.target);
 });
 
@@ -115,7 +107,7 @@ equalButton.addEventListener("click", () => {
   equalPressed = true;
 
   // Get second value
-  secondValue = parseInt(display);
+  secondValue = parseFloat(display);
 
   // Update display with second value
   equationDisplay += secondValue.toString() + " ";
@@ -123,7 +115,8 @@ equalButton.addEventListener("click", () => {
 
   // Perform operation
   result = operate(operator, firstValue, secondValue);
-  
+  result = Math.round(result * 100000) / 100000;
+
   // Update display with equation result
   equationDisplay += "= " + result.toString();
   equation.innerHTML = equationDisplay;
