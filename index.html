@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link href="./style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <script src="./calculator.js" defer></script>
   <title>Calculator</title>
 </head>
@@ -19,29 +20,29 @@
         <button class="number-button number" data-value=7>7</button>
         <button class="number-button number" data-value=8>8</button>
         <button class="number-button number" data-value=9>9</button>
-        <button class="number-button" data-value="division">/</button>
+        <button class="number-button operator" data-value="division">/</button>
       </div>
       <div class="number-row">
         <button class="number-button number" data-value=4>4</button>
         <button class="number-button number" data-value=5>5</button>
         <button class="number-button number" data-value=6>6</button>
-        <button class="number-button" data-value="multiplication">*</button>
+        <button class="number-button operator" data-value="multiplication">*</button>
       </div>
       <div class="number-row">
         <button class="number-button number" data-value=1>1</button>
         <button class="number-button number" data-value=2>2</button>
         <button class="number-button number" data-value=3>3</button>
-        <button class="number-button" data-value="subtraction">-</button>
+        <button class="number-button operator" data-value="subtraction">-</button>
       </div>
       <div class="number-row">
         <button class="number-button number" data-value=".">.</button>
         <button class="number-button number" data-value=0>0</button>
-        <button class="number-button" data-value="equal">=</button>
-        <button class="number-button" data-value="addition">+</button>
+        <button class="number-button operator" data-value="equal">=</button>
+        <button class="number-button operator" data-value="addition">+</button>
       </div>
       <div class="number-row lower-buttons">
-        <button class="clear">CLEAR</button>
-        <button class="backspace">BACK</button>
+        <button class="clear"><span class="material-symbols-outlined">delete</span></button>
+        <button class="backspace"><span class="material-symbols-outlined">backspace</span></button>
       </div>
     </div>
   </div>
