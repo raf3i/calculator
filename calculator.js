@@ -164,7 +164,7 @@ function clearDisplay() {
 }
 
 function clearEquation() {
-  equation.innerHTML = "88888888888888";
+  equation.innerHTML = "";
   firstValue = null;
   operator = null;
   secondValue = null;
