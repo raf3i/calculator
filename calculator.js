@@ -52,6 +52,20 @@ clear.addEventListener("click", () => {
 const back = document.querySelector(".backspace");
 back.addEventListener("click", backspace);
 
+// Change Sign button
+const changeSign = document.querySelector(".change-sign");
+changeSign.addEventListener("click", e => {
+  if (display === "") return;
+
+  if (display[0] == "-") {
+    display = display.slice(1, display.length);
+  } else {
+    display = "-" + display;
+  }
+
+  answer.innerHTML = display;
+});
+
 // Operator buttons' functionality
 let firstValue;
 let secondValue;
