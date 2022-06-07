@@ -54,7 +54,7 @@ back.addEventListener("click", backspace);
 
 // Change Sign button
 const changeSign = document.querySelector(".change-sign");
-changeSign.addEventListener("click", e => {
+changeSign.addEventListener("click", () => {
   let toBeChanged = parseFloat(display);
   let isResult = false; // Detect if user wants to change sign of result
   if (display === "") {
@@ -76,6 +76,24 @@ changeSign.addEventListener("click", e => {
     answer.innerHTML = display;
   }
 });
+
+// Square button
+const square = document.querySelector(".square");
+square.addEventListener("click", () => {
+  if (display === "") {
+    if (!result) return;
+    else {
+      result *= result;
+      equation.innerHTML = result;
+      return;
+    }
+  }
+
+  display = parseFloat(display);
+  display *= display;
+  display = display.toString();
+  answer.innerHTML = display;
+})
 
 // Operator buttons' functionality
 let firstValue;
