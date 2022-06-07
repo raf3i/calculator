@@ -55,15 +55,26 @@ back.addEventListener("click", backspace);
 // Change Sign button
 const changeSign = document.querySelector(".change-sign");
 changeSign.addEventListener("click", e => {
-  if (display === "") return;
-
-  if (display[0] == "-") {
-    display = display.slice(1, display.length);
-  } else {
-    display = "-" + display;
+  let toBeChanged = parseFloat(display);
+  let isResult = false; // Detect if user wants to change sign of result
+  if (display === "") {
+    if (result == null) {
+      return;   // No result or display present, so we quit the function
+    } else {
+      isResult = true;
+      toBeChanged = result; // Display not present but result present, user wants to change result
+    }
   }
 
-  answer.innerHTML = display;
+  toBeChanged *= -1;
+
+  if (isResult) {
+    result = toBeChanged;
+    equation.innerHTML = result;
+  } else {
+    display = toBeChanged;
+    answer.innerHTML = display;
+  }
 });
 
 // Operator buttons' functionality
