@@ -133,6 +133,11 @@ equalButton.addEventListener("click", () => {
 
   // Perform operation
   result = operate(operator, firstValue, secondValue);
+  if (result === false) {
+    clearDisplay();
+    equation.innerHTML = "zero division invalid";
+    return;
+  }
   result = Math.round(result * 100000) / 100000;
 
   // Update display with equation result
@@ -156,6 +161,11 @@ function calculate(operation, e) {
 
   if (display !== "" && result !== null) {
     firstValue = operate(operator, parseFloat(result), parseFloat(display));
+    if (firstValue === false) {
+      clearDisplay();
+      equation.innerHTML = "zero division invalid";
+      return;
+    }
     result = parseFloat(firstValue);
   } else if (display !== "" && result === null) {
     firstValue = parseFloat(display);
@@ -191,6 +201,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+  if (b == 0 && a != 0) {
+    return false;
+  }
   return a / b;
 }
 
