@@ -59,6 +59,8 @@ body {
   background-color: lightgrey;
   padding: 4px;
   margin-bottom: 18px;
+  max-width: 399px;
+  overflow: hidden;
 }
 
 .equation,
@@ -68,8 +70,12 @@ body {
 
 .equation {
   font-size: 40px;
-  height: 45px;
+  height: 41px;
+  max-height: 41px;
+  line-height: 45px;
+  white-space: nowrap;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 

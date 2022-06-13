@@ -10,14 +10,14 @@ const division = document.querySelector("button[data-value=division]");
 const equalButton = document.querySelector("button[data-value=equal]");
 
 let display = "";
-let result = null;  // why did i create this variable - to take the result as a first value if it is not null
+let result = null;
 let decimal = false;
 let begin = true;
 numbers.forEach(number => number.addEventListener("click", e => {
   // Limit number length to 11 digits
-  if (display.length >= 11) return;
+  if (answer.innerHTML.length >= 10) return;
 
-  let value = e.target.dataset.value
+  let value = e.target.dataset.value;
 
   // Prevent additional 0 inputs
   if (display == "0" && value == "0") return;
@@ -35,7 +35,6 @@ numbers.forEach(number => number.addEventListener("click", e => {
     value = "0.";
   }
 
-  console.log(value);
   display += value;
   answer.innerHTML = display;
   begin = false;
@@ -139,8 +138,6 @@ equalButton.addEventListener("click", () => {
   // Update display with equation result
   equationDisplay += "= " + result.toString();
   equation.innerHTML = equationDisplay;
-
-  console.log(result);
 
   clearDisplay();
 });
